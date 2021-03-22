@@ -1,0 +1,42 @@
+<?php //App_Entity_AgencePartenaire
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\AgencePartenaire',
+                'id',
+                'adresse',
+                'telephone',
+                'latitude',
+                'longitude',
+                'compteAgencePartenaire',
+                'utilisateurs',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'adresse' => $o[2],
+                    'telephone' => $o[3],
+                    'latitude' => $o[4],
+                    'longitude' => $o[5],
+                    'compteAgencePartenaire' => $o[6],
+                    'utilisateurs' => $o[7],
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

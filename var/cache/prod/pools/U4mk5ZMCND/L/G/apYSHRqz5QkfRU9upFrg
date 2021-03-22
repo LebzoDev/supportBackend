@@ -1,0 +1,158 @@
+<?php //%255BApp%255CEntity%255CAgencePartenaire%2524CLASSMETADATA%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ClassMetadata')),
+        clone ($p['Doctrine\\ORM\\Id\\IdentityGenerator'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Id\\IdentityGenerator')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\AgencePartenaire',
+            ],
+            'namespace' => [
+                'App\\Entity',
+            ],
+            'rootEntityName' => [
+                'App\\Entity\\AgencePartenaire',
+            ],
+            'customRepositoryClassName' => [
+                'App\\Repository\\AgencePartenaireRepository',
+            ],
+            'identifier' => [
+                [
+                    'id',
+                ],
+            ],
+            'generatorType' => [
+                4,
+            ],
+            'fieldMappings' => [
+                [
+                    'id' => [
+                        'fieldName' => 'id',
+                        'type' => 'integer',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'id' => true,
+                        'columnName' => 'id',
+                    ],
+                    'adresse' => [
+                        'fieldName' => 'adresse',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => 255,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'adresse',
+                    ],
+                    'telephone' => [
+                        'fieldName' => 'telephone',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => 255,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'telephone',
+                    ],
+                    'latitude' => [
+                        'fieldName' => 'latitude',
+                        'type' => 'float',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => true,
+                        'precision' => 0,
+                        'columnName' => 'latitude',
+                    ],
+                    'longitude' => [
+                        'fieldName' => 'longitude',
+                        'type' => 'float',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => true,
+                        'precision' => 0,
+                        'columnName' => 'longitude',
+                    ],
+                ],
+            ],
+            'fieldNames' => [
+                [
+                    'id' => 'id',
+                    'adresse' => 'adresse',
+                    'telephone' => 'telephone',
+                    'latitude' => 'latitude',
+                    'longitude' => 'longitude',
+                ],
+            ],
+            'columnNames' => [
+                [
+                    'id' => 'id',
+                    'adresse' => 'adresse',
+                    'telephone' => 'telephone',
+                    'latitude' => 'latitude',
+                    'longitude' => 'longitude',
+                ],
+            ],
+            'table' => [
+                [
+                    'name' => 'agence_partenaire',
+                ],
+            ],
+            'associationMappings' => [
+                [
+                    'compteAgencePartenaire' => [
+                        'fieldName' => 'compteAgencePartenaire',
+                        'targetEntity' => 'App\\Entity\\CompteAgencePartenaire',
+                        'joinColumns' => [],
+                        'mappedBy' => 'agencePartenaireAssociee',
+                        'inversedBy' => null,
+                        'cascade' => [
+                            'persist',
+                            'remove',
+                        ],
+                        'orphanRemoval' => false,
+                        'fetch' => 2,
+                        'type' => 1,
+                        'isOwningSide' => false,
+                        'sourceEntity' => 'App\\Entity\\AgencePartenaire',
+                        'isCascadeRemove' => true,
+                        'isCascadePersist' => true,
+                        'isCascadeRefresh' => false,
+                        'isCascadeMerge' => false,
+                        'isCascadeDetach' => false,
+                    ],
+                    'utilisateurs' => [
+                        'fieldName' => 'utilisateurs',
+                        'mappedBy' => 'agencePartenaire',
+                        'targetEntity' => 'App\\Entity\\AdminSystem',
+                        'cascade' => [],
+                        'orphanRemoval' => false,
+                        'fetch' => 2,
+                        'type' => 4,
+                        'inversedBy' => null,
+                        'isOwningSide' => false,
+                        'sourceEntity' => 'App\\Entity\\AgencePartenaire',
+                        'isCascadeRemove' => false,
+                        'isCascadePersist' => false,
+                        'isCascadeRefresh' => false,
+                        'isCascadeMerge' => false,
+                        'isCascadeDetach' => false,
+                    ],
+                ],
+            ],
+            'idGenerator' => [
+                $o[1],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

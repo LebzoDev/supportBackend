@@ -1,0 +1,128 @@
+<?php //%255BApp%255CEntity%255CClient%2524CLASSMETADATA%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ClassMetadata')),
+        clone ($p['Doctrine\\ORM\\Id\\IdentityGenerator'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Id\\IdentityGenerator')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\Client',
+            ],
+            'namespace' => [
+                'App\\Entity',
+            ],
+            'rootEntityName' => [
+                'App\\Entity\\Client',
+            ],
+            'customRepositoryClassName' => [
+                'App\\Repository\\ClientRepository',
+            ],
+            'identifier' => [
+                [
+                    'id',
+                ],
+            ],
+            'generatorType' => [
+                4,
+            ],
+            'fieldMappings' => [
+                [
+                    'id' => [
+                        'fieldName' => 'id',
+                        'type' => 'integer',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'id' => true,
+                        'columnName' => 'id',
+                    ],
+                    'username' => [
+                        'fieldName' => 'username',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => 180,
+                        'unique' => true,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'username',
+                    ],
+                    'password' => [
+                        'fieldName' => 'password',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'password',
+                    ],
+                    'nomComplet' => [
+                        'fieldName' => 'nomComplet',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => 255,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'nom_complet',
+                    ],
+                    'CNI' => [
+                        'fieldName' => 'CNI',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => 255,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'cni',
+                    ],
+                    'telephone' => [
+                        'fieldName' => 'telephone',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => 255,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'telephone',
+                    ],
+                ],
+            ],
+            'fieldNames' => [
+                [
+                    'id' => 'id',
+                    'username' => 'username',
+                    'password' => 'password',
+                    'nom_complet' => 'nomComplet',
+                    'cni' => 'CNI',
+                    'telephone' => 'telephone',
+                ],
+            ],
+            'columnNames' => [
+                [
+                    'id' => 'id',
+                    'username' => 'username',
+                    'password' => 'password',
+                    'nomComplet' => 'nom_complet',
+                    'CNI' => 'cni',
+                    'telephone' => 'telephone',
+                ],
+            ],
+            'table' => [
+                [
+                    'name' => 'client',
+                ],
+            ],
+            'idGenerator' => [
+                $o[1],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];
