@@ -2,14 +2,33 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\CompteAgencePartenaireRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Depot;
+use App\Entity\Transaction;
+use App\Entity\AgencePartenaire;
 use Doctrine\ORM\Mapping as ORM;
+use App\Controller\InfosUserController;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
+use App\Repository\CompteAgencePartenaireRepository;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *      normalizationContext={"groups"={"displaysTransactions"}},
+ *      collectionOperations={
+ *          "get","post",
+ *           "getInfos"={
+ *                 "path"="/administrateur/getInfos",
+ *                 "controller"="App\Controlller\InfosUserController::getInfos",
+ *                 "methods"="GET"
+ *      }
+ *      },
+ *     itemOperations={
+ *          "get","put","delete"
+ *      }
+ * )
  * @ORM\Entity(repositoryClass=CompteAgencePartenaireRepository::class)
  */
 class CompteAgencePartenaire
@@ -18,49 +37,64 @@ class CompteAgencePartenaire
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"displaysTransactions"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"displaysTransactions"})
      */
     private $numeroCompte;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"displaysTransactions"})
      */
     private $solde;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups({"displaysTransactions"})
      */
     private $dateCreation;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"displaysTransactions"})
      */
     private $statut;
 
     /**
      * @ORM\OneToOne(targetEntity=AgencePartenaire::class, inversedBy="compteAgencePartenaire", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
+     * @ApiSubresource()
      */
     private $agencePartenaireAssociee;
 
     /**
      * @ORM\OneToMany(targetEntity=Transaction::class, mappedBy="compteAP")
+     * @ApiSubresource()
      */
     private $transactions;
 
     /**
      * @ORM\OneToMany(targetEntity=Depot::class, mappedBy="compteAP")
+     * @ApiSubresource()
      */
     private $depots;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Transaction::class, mappedBy="compteAPRetrait")
+     * @ApiSubresource()
+     */
+    private $retraits;
 
     public function __construct()
     {
         $this->transactions = new ArrayCollection();
         $this->depots = new ArrayCollection();
+        $this->retraits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -182,6 +216,36 @@ class CompteAgencePartenaire
             // set the owning side to null (unless already changed)
             if ($depot->getCompteAP() === $this) {
                 $depot->setCompteAP(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Transaction[]
+     */
+    public function getRetraits(): Collection
+    {
+        return $this->retraits;
+    }
+
+    public function addRetrait(Transaction $retrait): self
+    {
+        if (!$this->retraits->contains($retrait)) {
+            $this->retraits[] = $retrait;
+            $retrait->setCompteAPRetrait($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRetrait(Transaction $retrait): self
+    {
+        if ($this->retraits->removeElement($retrait)) {
+            // set the owning side to null (unless already changed)
+            if ($retrait->getCompteAPRetrait() === $this) {
+                $retrait->setCompteAPRetrait(null);
             }
         }
 

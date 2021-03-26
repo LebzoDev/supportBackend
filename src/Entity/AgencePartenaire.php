@@ -51,6 +51,11 @@ class AgencePartenaire
      */
     private $utilisateurs;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $statut;
+
     public function __construct()
     {
         $this->utilisateurs = new ArrayCollection();
@@ -152,6 +157,18 @@ class AgencePartenaire
                 $utilisateur->setAgencePartenaire(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getStatut(): ?bool
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(?bool $statut): self
+    {
+        $this->statut = $statut;
 
         return $this;
     }

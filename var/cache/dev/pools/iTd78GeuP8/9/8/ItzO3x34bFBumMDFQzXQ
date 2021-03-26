@@ -19,6 +19,15 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
         clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
     ],
     null,
     [
@@ -34,9 +43,18 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 'part_systeme',
                 'part_user_depot',
                 'part_user_retrait',
-                'type',
                 'utilisateurAP',
                 'compteAP',
+                'nomCompletBeneficiaire',
+                'numeroTelClient',
+                'nomCompletClient',
+                'compteAPRetrait',
+                'numeroTelBeneficiaire',
+                'retraitEffectif',
+                'utilisateurAPRetrait',
+                'cniClient',
+                'cniBeneficiaire',
+                'dateRetrait',
                 'partEtat',
                 'partSysteme',
                 'partUserDepot',
@@ -53,13 +71,87 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'part_systeme' => $o[7],
                     'part_user_depot' => $o[8],
                     'part_user_retrait' => $o[9],
-                    'type' => $o[10],
-                    'utilisateurAP' => $o[11],
-                    'compteAP' => $o[12],
-                    'partEtat' => $o[13],
-                    'partSysteme' => $o[14],
-                    'partUserDepot' => $o[15],
-                    'partUserRetrait' => $o[16],
+                    'utilisateurAP' => $o[10],
+                    'compteAP' => $o[11],
+                    'nomCompletBeneficiaire' => $o[12],
+                    'numeroTelClient' => $o[13],
+                    'nomCompletClient' => $o[14],
+                    'compteAPRetrait' => $o[15],
+                    'numeroTelBeneficiaire' => $o[16],
+                    'retraitEffectif' => $o[17],
+                    'utilisateurAPRetrait' => $o[18],
+                    'cniClient' => $o[19],
+                    'cniBeneficiaire' => $o[20],
+                    'dateRetrait' => $o[21],
+                    'partEtat' => $o[22],
+                    'partSysteme' => $o[23],
+                    'partUserDepot' => $o[24],
+                    'partUserRetrait' => $o[25],
+                ],
+            ],
+            'groups' => [
+                1 => [
+                    'displaysTransactions',
+                ],
+                [
+                    'displaysTransactions',
+                ],
+                [
+                    'displaysTransactions',
+                ],
+                [
+                    'displaysTransactions',
+                ],
+                [
+                    'displaysTransactions',
+                ],
+                [
+                    'displaysTransactions',
+                ],
+                [
+                    'displaysTransactions',
+                ],
+                [
+                    'displaysTransactions',
+                ],
+                [
+                    'displaysTransactions',
+                ],
+                [
+                    'displaysTransactions',
+                ],
+                [
+                    'displaysTransactions',
+                ],
+                [
+                    'displaysTransactions',
+                ],
+                [
+                    'displaysTransactions',
+                ],
+                [
+                    'displaysTransactions',
+                ],
+                [
+                    'displaysTransactions',
+                ],
+                [
+                    'displaysTransactions',
+                ],
+                [
+                    'displaysTransactions',
+                ],
+                [
+                    'displaysTransactions',
+                ],
+                [
+                    'displaysTransactions',
+                ],
+                [
+                    'displaysTransactions',
+                ],
+                [
+                    'displaysTransactions',
                 ],
             ],
         ],

@@ -20,7 +20,7 @@ class TransactionRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return CompteAgencePartenaire[] Returns an array of CompteAgencePartenaire objects
+    //  * @return Transaction[] Returns an array of Transaction objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class TransactionRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?CompteAgencePartenaire
+    public function findOneBySomeField($value): ?Transaction
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')

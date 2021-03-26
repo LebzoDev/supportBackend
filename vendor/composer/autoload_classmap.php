@@ -503,6 +503,7 @@ return array(
     'App\\DataFixtures\\AppFixtures' => $baseDir . '/src/DataFixtures/AppFixtures.php',
     'App\\DataFixtures\\F01UserFixtures' => $baseDir . '/src/DataFixtures/F01UserFixtures.php',
     'App\\DataFixtures\\F02AgencePartenaire' => $baseDir . '/src/DataFixtures/F02AgencePartenaire.php',
+    'App\\DataPersisters\\TransactionPersister' => $baseDir . '/src/DataPersisters/TransactionPersister.php',
     'App\\Entity\\AdminSystem' => $baseDir . '/src/Entity/AdminSystem.php',
     'App\\Entity\\AgencePartenaire' => $baseDir . '/src/Entity/AgencePartenaire.php',
     'App\\Entity\\Client' => $baseDir . '/src/Entity/Client.php',

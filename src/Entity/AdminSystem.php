@@ -2,19 +2,24 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Transaction;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\AdminSystemRepository;
+use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 
 /**
  * @ApiResource(
-    *     collectionOperations={"get","post"},
-    *     itemOperations={"get", "put", "delete"}
-    * )
+ *     normalizationContext={"groups"={"displaysTransactions","displayUsers"}},
+ *     collectionOperations={"get",
+ * "post"},
+ *     itemOperations={"get", "put", "delete"}
+ * )
  * @ORM\Entity(repositoryClass=AdminSystemRepository::class)
  */
 class AdminSystem implements UserInterface
@@ -23,6 +28,7 @@ class AdminSystem implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"displaysTransactions"})
      */
     private $id;
 
@@ -42,16 +48,13 @@ class AdminSystem implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"displaysTransactions"})
      */
     private $email;
 
     /**
-     * @ORM\Column(type="blob", nullable=true)
-     */
-    private $avatar;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"displaysTransactions"})
      */
     private $telephone;
 
@@ -63,38 +66,51 @@ class AdminSystem implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"displaysTransactions"})
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"displaysTransactions"})
      */
     private $nom;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"displaysTransactions"})
      */
     private $archive;
 
     /**
      * @ORM\ManyToOne(targetEntity=AgencePartenaire::class, inversedBy="utilisateurs")
+     * @ApiSubresource()
      */
     private $agencePartenaire;
 
     /**
      * @ORM\OneToMany(targetEntity=Depot::class, mappedBy="caissier")
+     * @ApiSubresource()
      */
     private $depots;
 
     /**
      * @ORM\OneToMany(targetEntity=Transaction::class, mappedBy="utilisateurAP")
+     * @ApiSubresource()
      */
     private $transactions;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Transaction::class, mappedBy="utilisateurAPRetrait")
+     * @ApiSubresource()
+     */
+    private $retraits;
 
     public function __construct()
     {
         $this->depots = new ArrayCollection();
         $this->transactions = new ArrayCollection();
+        $this->retraits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -180,18 +196,6 @@ class AdminSystem implements UserInterface
     public function setEmail(?string $email): self
     {
         $this->email = $email;
-
-        return $this;
-    }
-
-    public function getAvatar()
-    {
-        return $this->avatar;
-    }
-
-    public function setAvatar($avatar): self
-    {
-        $this->avatar = $avatar;
 
         return $this;
     }
@@ -322,6 +326,36 @@ class AdminSystem implements UserInterface
             // set the owning side to null (unless already changed)
             if ($transaction->getUtilisateurAP() === $this) {
                 $transaction->setUtilisateurAP(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Transaction[]
+     */
+    public function getRetraits(): Collection
+    {
+        return $this->retraits;
+    }
+
+    public function addRetrait(Transaction $retrait): self
+    {
+        if (!$this->retraits->contains($retrait)) {
+            $this->retraits[] = $retrait;
+            $retrait->setUtilisateurAPRetrait($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRetrait(Transaction $retrait): self
+    {
+        if ($this->retraits->removeElement($retrait)) {
+            // set the owning side to null (unless already changed)
+            if ($retrait->getUtilisateurAPRetrait() === $this) {
+                $retrait->setUtilisateurAPRetrait(null);
             }
         }
 
