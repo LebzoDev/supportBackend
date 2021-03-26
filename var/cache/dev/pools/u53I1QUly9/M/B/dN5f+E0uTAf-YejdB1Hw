@@ -41,32 +41,6 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                     ],
-                    'delete' => [
-                        'method' => 'DELETE',
-                        'stateless' => null,
-                        'input_formats' => [
-                            'jsonld' => [
-                                'application/ld+json',
-                            ],
-                            'json' => [
-                                'application/json',
-                            ],
-                            'html' => [
-                                'text/html',
-                            ],
-                        ],
-                        'output_formats' => [
-                            'jsonld' => [
-                                'application/ld+json',
-                            ],
-                            'json' => [
-                                'application/json',
-                            ],
-                            'html' => [
-                                'text/html',
-                            ],
-                        ],
-                    ],
                     'put' => [
                         'method' => 'PUT',
                         'stateless' => null,
@@ -93,12 +67,18 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                     ],
-                    'patch' => [
-                        'method' => 'PATCH',
+                    'delete' => [
+                        'method' => 'DELETE',
                         'stateless' => null,
                         'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
                             'json' => [
-                                'application/merge-patch+json',
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
                             ],
                         ],
                         'output_formats' => [
@@ -169,6 +149,37 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                             ],
                         ],
                     ],
+                    'getInfos' => [
+                        'path' => '/administrateur/getInfos',
+                        'controller' => 'App\\Controlller\\InfosUserController::getInfos',
+                        'methods' => 'GET',
+                        'input' => null,
+                        'output' => null,
+                        'route_name' => 'getInfos',
+                        'stateless' => null,
+                        'input_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                        'output_formats' => [
+                            'jsonld' => [
+                                'application/ld+json',
+                            ],
+                            'json' => [
+                                'application/json',
+                            ],
+                            'html' => [
+                                'text/html',
+                            ],
+                        ],
+                    ],
                 ],
             ],
             'graphql' => [
@@ -182,6 +193,11 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             ],
             'attributes' => [
                 [
+                    'normalization_context' => [
+                        'groups' => [
+                            'displaysTransactions',
+                        ],
+                    ],
                     'input' => null,
                     'output' => null,
                 ],
